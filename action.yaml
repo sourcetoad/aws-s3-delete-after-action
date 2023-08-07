@@ -1,0 +1,29 @@
+name: 'Sourcetoad - AWS S3 Delete After Action'
+description: 'Delete S3 files older than a specific time.'
+author: Sourcetoad
+branding:
+  color: 'gray-dark'
+  icon: 'delete'
+
+inputs:
+  s3_bucket_name:
+    description: 'S3 Bucket Name'
+    required: true
+  s3_prefix:
+    description: 'S3 Prefix'
+    required: true
+  s3_delete_after_minutes:
+    description: 'Files older than this (minutes) will be deleted.'
+    required: true
+  aws_region:
+    description: 'AWS Region'
+    required: false
+    default: 'us-east-1'
+  dry_run:
+    description: 'Whether to skip all AWS related write steps.'
+    required: false
+    default: 'false'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  entrypoint: '/delete.sh'
