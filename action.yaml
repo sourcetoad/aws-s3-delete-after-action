@@ -11,17 +11,17 @@ inputs:
     required: true
   s3_prefix:
     description: 'S3 Prefix'
-    required: true
-  s3_delete_after_minutes:
-    description: 'Files older than this (minutes) will be deleted.'
+    default: ''
+    required: false
+  s3_delete_phrase:
+    description: 'Files older than this phrase (ie -7days, -1month)'
     required: true
   aws_region:
     description: 'AWS Region'
     required: false
     default: 'us-east-1'
-  dry_run:
-    description: 'Whether to skip all AWS related write steps.'
-    required: false
+  no_dry_run:
+    description: 'Must set to true for actual deletion to occur.'
     default: 'false'
 runs:
   using: 'docker'
