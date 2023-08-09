@@ -5,7 +5,7 @@ _To delete files from S3 older than a specified time frame._
 
 * Give the action a delete phrase compatible with the `date` command, such as `-30 days`.
 * Action requests a list of all files in the bucket filtering the response with that criteria.
-* Action deletes the files from that response if `no_dry_run` is set to `true`.
+* Action chunks those files in sets of 50 issuing a delete request for each set if `no_dry_run` is set to `true`.
 
 ## Usage
 
@@ -34,7 +34,7 @@ Following inputs can be used as `step.with` keys
 | Name               | Required | Type   | Description                                          |
 |--------------------|----------|--------|------------------------------------------------------|
 | `s3_bucket_name`   | yes      | string | S3 Bucket Name                                       |
-| `s3_prefix`        | no       | string | S3 Filter Path (default: ``)                         |
+| `s3_prefix`        | no       | string | S3 Filter Path (default: `''`)                       |
 | `s3_delete_phrase` | yes      | string | Delete Phrase, commonly like `-30 days` or `-1 hour` |
 | `aws_region`       | no       | string | AWS Region (default: `us-east-1`)                    |
 | `no_dry_run`       | no       | string | Whether to actually delete files, (default: `false`) |
