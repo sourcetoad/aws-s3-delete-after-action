@@ -8,7 +8,7 @@ BLUE='\033[0;34m'
 # Functions
 function getBucketContents() {
     aws s3api list-objects-v2 \
-     --bucket "$INPUT_S3_BUCKET" \
+     --bucket "$INPUT_S3_BUCKET_NAME" \
      --prefix "$INPUT_S3_PREFIX" \
      --output json \
      --query "Contents[?LastModified<='$1'].Key"
@@ -16,7 +16,7 @@ function getBucketContents() {
 
 function deleteFileFromBucket() {
     aws s3api delete-object \
-     --bucket "$INPUT_S3_BUCKET" \
+     --bucket "$INPUT_S3_BUCKET_NAME" \
      --key "$1"
 }
 
