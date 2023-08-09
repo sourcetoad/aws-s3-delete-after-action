@@ -34,7 +34,7 @@ if [ -n "$INPUT_AWS_REGION" ]; then
 fi
 
 # Get the contents of the bucket
-DATE=$(gdate -d "$INPUT_S3_DELETE_PHRASE" +"%Y-%m-%dT%H:%M:%S%z")
+DATE=$(date -d "$INPUT_S3_DELETE_PHRASE" +"%Y-%m-%dT%H:%M:%S%z")
 
 # Ensure we have a valid date
 EXIT_CODE=$?
