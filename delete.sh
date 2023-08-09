@@ -54,7 +54,7 @@ COUNT=0
 FILES=""
 for FILE in $RESPONSE; do
     # Skip empty lines
-    if [ -n "$FILE" ]; then
+    if [ -z "$FILE" ]; then
         continue;
     fi
 
