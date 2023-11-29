@@ -1,4 +1,4 @@
-FROM amazon/aws-cli:2.13.7
+FROM amazon/aws-cli:2.14.2
 
 COPY delete.sh /delete.sh
 
